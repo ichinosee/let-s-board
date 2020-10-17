@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>掲示板</title>
+</head>
+<body>
+<h1>掲示板</h1>
+
+<form action="/apply" method="post">
+<P>
+<input type="text" name="name" placeholder="名前">
+</P>
+<P>
+<textarea name="contents" placeholder="書き込み"></textarea>
+</P>
+<P>
+<textarea name="mood" placeholder="今日の気分"></textarea>
+</P>
+<P>
+<input type="submit" value="投稿する">
+</P>
+
+</form>
+
+<hr>
+
+<table style="width:100%;" border="1">
+<tr>
+<th>日時</th><th>名前</th><th>書き込み</th><th>今の気分</th>
+</tr>
+<tr th:each="rec:${allContents}">
+<td th:text="${rec.datetime}"></td>
+<td th:text="${rec.name}"></td>
+<td th:utext="${rec.contents}"></td>
+<td th:utext="${rec.mood}"></td>
+</tr>
+</table>
+
+<a href="/">すべてクリアする</a>
+</body>
+</html>
